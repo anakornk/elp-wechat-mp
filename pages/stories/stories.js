@@ -1,4 +1,17 @@
 Page({
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      console.log(res.target)
+    }
+    return {
+      title: 'Send to friends!',
+      path: '/pages/stories',
+      success: function (res) {
+      },
+      fail: function (res) {
+      }
+    }
+  },
   data: {
     winWidth: 0,
     winHeight: 0,

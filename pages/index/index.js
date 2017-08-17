@@ -2,9 +2,22 @@
 //获取应用实例
 var app = getApp()
 Page({
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      console.log(res.target)
+    }
+    return {
+      title: 'Send to friends!',
+      path: '/pages/index',
+      success: function (res) {
+      },
+      fail: function (res) {
+      }
+    }
+  },
   data: {
     imgUrls: ['/photos/home-slide-image1.png', '/photos/home-slide-image2.png', '/photos/home-slide-image3.png']
-  },
+  },  
   changeIndicatorDots: function (e) {
     this.setData({
       indicatorDots: !this.data.indicatorDots

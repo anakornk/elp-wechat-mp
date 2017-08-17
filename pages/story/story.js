@@ -5,6 +5,25 @@ Page({
     textdata: "put value",
     isLastPage: false
   },
+  listenerButtonPlay: function () {
+    wx.playBackgroundAudio({
+      dataUrl: 'http://www.kozco.com/tech/organfinale.wav',
+      title: 'testing',
+    })
+  },
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      console.log(res.target)
+    }
+    return {
+      title: 'Send to friends!',
+      path: '/pages/story',
+      success: function (res) {
+      },
+      fail: function (res) {
+      }
+    }
+  },
   onLoad: function (e) {
     var story_id = e.story_id;
     var page_id = e.page_id;
