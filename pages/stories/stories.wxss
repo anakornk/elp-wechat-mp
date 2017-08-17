@@ -1,0 +1,57 @@
+.stories-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10rpx 15rpx 15rpx 10rpx;
+}
+
+.card {
+  width: 45vw;
+  box-shadow: 0 12rpx 15rpx 0 rgba(0, 0, 0, 0.24), 0 17rpx 50rpx 0 rgba(0, 0, 0, 0.19);
+  margin-top: 15rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;  
+  margin-bottom: 15rpx;
+  border-radius: 10rpx;
+  border-top:6px solid #FFBE04;
+}
+.card .cardContent {
+  position: relative;
+  padding: 5rpx;
+  padding-top: 15%;
+  margin-top: -10%;
+  padding-bottom: 8%;
+  overflow: hidden;
+}
+
+ .stories_title {
+  color: #673AB7;
+  font-size: 25rpx;
+} 
+
+.card_image {
+  width: 45vw;
+  height: 25vh;
+  position: relative;
+  margin-bottom: -1%;
+}
+
+.swiper-tab {
+  width: 100%;
+  border-bottom: 2rpx solid #777;
+  text-align: center;
+  line-height: 80rpx;
+}
+.swiper-tab-list {
+  font-size: 30rpx;
+  display: inline-block;
+  width: 33.33%;
+  color: #777;
+}
+.on{ color: #da7c0c;
+border-bottom: 5rpx solid #da7c0c;}
+.swiper-box{ display: block; height: 100%; width: 100%; overflow: hidden; }
+.swiper-box view{
+  text-align: center;
+}

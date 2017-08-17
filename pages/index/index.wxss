@@ -1,0 +1,46 @@
+/**index.wxss**/
+.swiper{
+  height: 100vh;
+  width: 100vw;
+}
+
+.slide-image {
+ height: 100vh;
+ width: 100vw;
+}
+
+page .wx-swiper-dots.wx-swiper-dots-horizontal{
+  margin-bottom: 4rpx;
+}
+
+page .wx-swiper-dot{
+  width: 30rpx;
+  display: inline-flex;
+  height: 30rpx;
+}
+
+
+/* .elp-info {
+    color:white;
+    position:absolute;
+    display:flex;
+    align-items:center;
+    top:400rpx;
+    justify-content:space-between;
+    padding:0 20rpx 0 20rpx;
+    font-size: 40rpx;
+} */
+
+
+/* . home-swiper{
+    width:100%;
+    position:absolute;
+    top:100rpx;
+    padding:0 20rpx 0 20rpx;
+    font-size: 40rpx;
+    color: #98a32a;
+    text-shadow: 6rpx 6rpx 1rpx #ffffff;
+    font-size: 70rpx;
+    margin-left: 30rpx;
+} */
+

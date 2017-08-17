@@ -1,0 +1,19 @@
+<view class="story-container">
+  <view class="card">
+    <image class="card_image" src="http://www.birds.cornell.edu/brp/elephant/media/images/cyclotis/jamilas.jpg">
+    </image>
+    <view class="cardContent">
+      <text class="story_content">{{textdata.content}}</text>
+      <view class="cardFooter">
+        <image class="button_image" image src="/photos/play-button.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- <view wx:if="{{textdata.links[0].nextPageId == null}}">The End</view> -->
+  <view wx:if="{{isLastPage}}">The End</view>
+
+  <view wx:for="{{textdata.links}}" wx:for-item="res" wx:if="{{res.nextPageId != null}}">
+    <button type="primary" data-nextpageid="{{res.nextPageId}}" bindtap="A">{{res.choice_text}}</button>
+  </view>
+</view>
