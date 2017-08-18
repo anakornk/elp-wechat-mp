@@ -14,20 +14,23 @@
   },
   "tabBar": {
     "backgroundColor": "#14A3AB",
-    "selectedColor": "white",
+    "selectedColor": "#fff",
     "color": "#131313",
+    "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/index/index",
         "iconPath": "photos/home_icon_black.png",
         "selectedIconPath": "photos/home_icon_white.png",
-        "text": "首页"
+        "text": "首页",
+        "color": "black"
       },
       {
         "pagePath": "pages/stories/stories",
         "iconPath": "photos/book_icon_black.png",
         "selectedIconPath": "photos/book_icon_white.png",
-        "text": "大象故事"
+        "text": "大象故事",
+        "color": "black"
       }
     ]
   }
