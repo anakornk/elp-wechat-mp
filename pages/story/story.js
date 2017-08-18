@@ -39,7 +39,9 @@ Page({
         });
       }
     });
-    var url = 'http://localhost:3000/stories/' + '2' + '/pages/' + page_id;
+    var url = 'http://localhost:3000/stories/' + story_id + '/pages/' + page_id;
+    var current_url = '../story/story?story_id=' + this.data.current_story + '&page_id=' + page_id
+    wx.setStorageSync('key', current_url),
     wx.request({
       url: url,
       method: 'GET',
@@ -47,7 +49,7 @@ Page({
       success: function (res) {
         console.log(res.data);
         that.setData({ textdata: res.data });
-        that.setData({ isLastPage: that.checkIfLastPage()})
+        that.setData({ isLastPage: that.checkIfLastPage() })
       },
       fail: function (res) {
       },
@@ -56,13 +58,12 @@ Page({
   A: function (e) {
     var nextPageId = e.currentTarget.dataset.nextpageid  //this.data.textdata.links[0].nextPageId
     var url = '../story/story?story_id=' + this.data.current_story + '&page_id=' + nextPageId
-    // var url = 'http://localhost:3000' + this.data.textdata.links[0].path
-    wx.redirectTo({
-      url: url
-    })
+      wx.redirectTo({
+        url: url
+      })
   },
-  
-  checkIfLastPage(){
+
+  checkIfLastPage() {
     var length = this.data.textdata.links.filter(function (link) {
       return link.nextPageId != null;
     }).length

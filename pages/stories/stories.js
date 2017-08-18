@@ -19,6 +19,10 @@ Page({
     textdata: "put value",
   },
   onLoad: function () {
+    var last_page = wx.getStorageSync('key')
+    wx.navigateTo({
+      url: last_page,
+    })
     var that = this;
     wx.getSystemInfo({
       success: function (res) {
