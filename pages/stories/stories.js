@@ -1,3 +1,4 @@
+
 Page({
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
@@ -17,12 +18,16 @@ Page({
     winHeight: 0,
     currentTab: 0,
     textdata: "put value",
+    host:"http://172.16.102.78:3000"
   },
   onLoad: function () {
     var last_page = wx.getStorageSync('key')
-    wx.navigateTo({
-      url: last_page,
-    })
+    if(last_page){
+      wx.navigateTo({
+        url: last_page,
+      })
+    }
+
     var that = this;
     wx.getSystemInfo({
       success: function (res) {
@@ -33,7 +38,7 @@ Page({
       }
     });
     wx.request({
-      url: 'http://localhost:3000/stories.json',
+      url: this.data.host + '/api/v1/stories',
       method: 'GET',
       header: { 'content-type': 'application/json' },
       success: function (res) {

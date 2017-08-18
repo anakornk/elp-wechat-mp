@@ -5,7 +5,7 @@
 <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">  
 <swiper-item> 
 <view class="stories-container">
-  <view class="card" wx:for="{{textdata}}" wx:for-item="res" wx:if="{{res.category == 'young'}}">
+  <view class="card" wx:for="{{textdata}}" wx:for-item="res" wx:key="{{res.id}}" wx:if="{{res.category == 'Young'}}">
     <image class="card_image" id="{{index}}" src="http://www.birds.cornell.edu/brp/elephant/media/images/cyclotis/jamilas.jpg" bindtap="tz">
     </image>
     <view class="cardContent">
@@ -17,7 +17,7 @@
 
 <swiper-item>  
 <view class="stories-container">
-  <view class="card" wx:for="{{textdata}}" wx:for-item="res" wx:if="{{res.category != 'young'}}">
+  <view class="card" wx:for="{{textdata}}" wx:for-item="res" wx:if="{{res.category != 'Young'}}">
     <image class="card_image" id="{{index}}" src="http://www.birds.cornell.edu/brp/elephant/media/images/cyclotis/jamilas.jpg" bindtap="tz">
     </image>
     <view class="cardContent">
