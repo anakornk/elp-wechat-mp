@@ -11,8 +11,10 @@ image{
 
 .cardContent{
   margin-left: 30rpx;
-  margin-right: 30rpx;
+  margin-right: 30rpx; 
   text-align:justify;
+  /* border-left:18rpx solid #FFBE04;
+  border-right:18rpx solid #FFBE04; */
 }
  .story_content {
   color: black;
@@ -29,6 +31,7 @@ image{
 .button_image{
   width: 60rpx;
   height: 60rpx;
+  justify-content: center;
 }
 
  .story-container{
