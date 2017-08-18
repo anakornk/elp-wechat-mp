@@ -1,9 +1,11 @@
+
 Page({
   data: {
     current_story: '',
     page_id: '0',
     textdata: "put value",
-    isLastPage: false
+    isLastPage: false,
+    host: "http://172.16.102.78:3000"
   },
   listenerButtonPlay: function () {
     wx.playBackgroundAudio({
@@ -39,9 +41,12 @@ Page({
         });
       }
     });
-    var url = 'http://localhost:3000/stories/' + story_id + '/pages/' + page_id;
+    var url = this.data.host + '/api/v1/stories/' + story_id + '/pages/' + page_id;
     var current_url = '../story/story?story_id=' + this.data.current_story + '&page_id=' + page_id
+    
+    // save start
     wx.setStorageSync('key', current_url),
+    // save end
     wx.request({
       url: url,
       method: 'GET',
@@ -49,6 +54,7 @@ Page({
       success: function (res) {
         console.log(res.data);
         that.setData({ textdata: res.data });
+        console.log(that.data.host + that.data.textdata.image_url)
         that.setData({ isLastPage: that.checkIfLastPage() })
       },
       fail: function (res) {
@@ -65,7 +71,7 @@ Page({
 
   checkIfLastPage() {
     var length = this.data.textdata.links.filter(function (link) {
-      return link.nextPageId != null;
+      return link.dst_page_id != null;
     }).length
 
     return length == 0;
