@@ -18,11 +18,15 @@ Page({
     winHeight: 0,
     currentTab: 0,
     textdata: "put value",
-    host:"http://172.16.102.78:3000"
+    host: "http://localhost:3000"
   },
   onLoad: function () {
+
+    wx.setNavigationBarTitle({
+      title: ' 大象故事',
+    })
     var last_page = wx.getStorageSync('key')
-    if(last_page){
+    if (last_page) {
       wx.navigateTo({
         url: last_page,
       })
@@ -42,7 +46,7 @@ Page({
       method: 'GET',
       header: { 'content-type': 'application/json' },
       success: function (res) {
-        that.setData({textdata:res.data});
+        that.setData({ textdata: res.data });
       },
       fail: function (res) {
       },
@@ -71,5 +75,18 @@ Page({
     wx.navigateTo({
       url: url
     })
-  }
+  },
+  loadData() {
+    console.log("load data");
+  },
+  onPullDownRefresh: function () {
+    console.log("pulldown")
+    wx.stopPullDownRefresh()
+    this.loadData()
+    wx.showToast({
+      title: '加载中...',
+      icon: 'loading',
+      duration: 1500
+    })
+  },
 })
