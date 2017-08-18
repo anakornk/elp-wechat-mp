@@ -14,7 +14,8 @@
   margin-right: 10rpx;  
   margin-bottom: 15rpx;
   border-radius: 10rpx;
-  border-top:6px solid #FFBE04;
+  border-top:18rpx solid #FFBE04;
+  background-color: white;
 }
 .card .cardContent {
   position: relative;
@@ -26,7 +27,7 @@
 }
 
  .stories_title {
-  color: #673AB7;
+  color: black;
   font-size: 25rpx;
 } 
 

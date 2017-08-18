@@ -8,8 +8,9 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#3DC3CF",
-    "navigationBarTitleText": "ELP",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "ELP 大象的低语",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "backgroundColor": "#14A3AB",
@@ -20,13 +21,13 @@
         "pagePath": "pages/index/index",
         "iconPath": "photos/home_icon_black.png",
         "selectedIconPath": "photos/home_icon_white.png",
-        "text": "Home"
+        "text": "首页"
       },
       {
         "pagePath": "pages/stories/stories",
         "iconPath": "photos/book_icon_black.png",
         "selectedIconPath": "photos/book_icon_white.png",
-        "text": "Stories"
+        "text": "大象故事"
       }
     ]
   }

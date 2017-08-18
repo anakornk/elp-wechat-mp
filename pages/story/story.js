@@ -5,7 +5,7 @@ Page({
     page_id: '0',
     textdata: "put value",
     isLastPage: false,
-    host: "http://172.16.102.78:3000"
+    host: "http://localhost:3000"
   },
   listenerButtonPlay: function () {
     wx.playBackgroundAudio({
