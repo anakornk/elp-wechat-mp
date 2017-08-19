@@ -17,7 +17,7 @@
 
 <swiper-item>  
 <view class="stories-container">
-  <view class="card" wx:for="{{textdata}}" wx:for-item="res" wx:if="{{res.category != 'Young'}}">
+  <view class="card" wx:for="{{textdata}}" wx:for-item="res" wx:key="{{res.id}}" wx:if="{{res.category != 'Young'}}">
     <image class="card_image" id="{{index}}" src="http://www.birds.cornell.edu/brp/elephant/media/images/cyclotis/jamilas.jpg" bindtap="tz">
     </image>
     <view class="cardContent">
