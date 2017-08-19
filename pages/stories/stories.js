@@ -1,3 +1,4 @@
+var host = getApp().globalData.host
 
 Page({
   onShareAppMessage: function (res) {
@@ -18,7 +19,7 @@ Page({
     winHeight: 0,
     currentTab: 0,
     textdata: "put value",
-    host: "https://elp-story-maker.herokuapp.com"
+    host
   },
   onLoad: function () {
 
@@ -42,7 +43,7 @@ Page({
       }
     });
     wx.request({
-      url: this.data.host + '/api/v1/stories',
+      url: host + '/api/v1/stories',
       method: 'GET',
       header: { 'content-type': 'application/json' },
       success: function (res) {

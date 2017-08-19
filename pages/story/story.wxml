@@ -1,7 +1,7 @@
 <view class="story-container">
   <view class="card">
-    <image src="{{host + textdata.image_url}}" mode="widthFix">
-    </image>
+    <image wx:if="{{isImage}}" src="{{host + textdata.image_video_url}}" mode="widthFix"></image>
+    <video wx:else src="{{host + textdata.image_video_url}}" controls="{{true}}"></video>
   </view>
 
     <view class="cardContent">
@@ -16,11 +16,10 @@
       </view>
     </view>
 
-
     <view class="button-container">
       <view wx:if="{{isLastPage}}">The End</view>
       <view wx:for="{{textdata.links}}" wx:for-item="res" wx:if="{{res.dst_page_id != null}}" wx:key="{{res.choice_index}}">
-        <button data-nextpageid="{{res.dst_page_id}}" bindtap="A">{{res.choice_text}}</button>
+        <button data-nextpageid="{{res.dst_page_id}}" bindtap="buttonClicked">{{res.choice_text}}</button>
       </view>
     </view>
 </view>

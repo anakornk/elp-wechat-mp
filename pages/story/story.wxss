@@ -9,6 +9,9 @@ image{
   width: 100%;
 }
 
+video {
+  width: 100%;
+}
 .cardContent{
   margin-left: 30rpx;
   margin-right: 30rpx; 
