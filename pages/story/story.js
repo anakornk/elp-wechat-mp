@@ -5,7 +5,7 @@ Page({
     page_id: '0',
     textdata: "put value",
     isLastPage: false,
-    host: "http://localhost:3000"
+    host: "https://elp-story-maker.herokuapp.com"
   },
   listenerButtonPlay: function () {
     wx.playBackgroundAudio({
@@ -19,8 +19,9 @@ Page({
     }
     return {
       title: 'Send to friends!',
-      path: '/pages/story',
+      path: '/pages/story/story?story_id=' + this.data.current_story + '&page_id=' + this.data.page_id,
       success: function (res) {
+
       },
       fail: function (res) {
       }
@@ -30,7 +31,8 @@ Page({
     var story_id = e.story_id;
     var page_id = e.page_id;
     this.setData({
-      current_story: story_id
+      current_story: story_id,
+      page_id: page_id
     })
     var that = this;
     wx.getSystemInfo({

@@ -6,7 +6,7 @@ Page({
     }
     return {
       title: 'Send to friends!',
-      path: '/pages/stories',
+      path: '/pages/stories/stories',
       success: function (res) {
       },
       fail: function (res) {
@@ -18,7 +18,7 @@ Page({
     winHeight: 0,
     currentTab: 0,
     textdata: "put value",
-    host: "http://localhost:3000"
+    host: "https://elp-story-maker.herokuapp.com"
   },
   onLoad: function () {
 
@@ -26,11 +26,11 @@ Page({
       title: ' 大象故事',
     })
     var last_page = wx.getStorageSync('key')
-    if (last_page) {
-      wx.navigateTo({
-        url: last_page,
-      })
-    }
+    // if (last_page) {
+    //   wx.navigateTo({
+    //     url: last_page,
+    //   })
+    // }
 
     var that = this;
     wx.getSystemInfo({
