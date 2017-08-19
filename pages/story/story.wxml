@@ -11,8 +11,9 @@
       <view>
         <text class="question-content">{{textdata.question}}</text>
       </view>
+      <audio wx:if="{{textdata.audio_url}}" src="{{host + textdata.audio_url}}" id="audioPlayer"></audio>
       <view class="cardFooter">
-        <image class="button_image" image src="/photos/play-button.png" bindtap="listenerButtonPlay"></image>
+        <image wx:if="{{textdata.audio_url}}" class="button_image" src="/photos/play-button.png" bindtap="audioPlay"></image>
       </view>
     </view>
 

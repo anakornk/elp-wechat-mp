@@ -52,6 +52,10 @@ Page({
     wx.setStorageSync('key', current_url)
     // save end
   },
+  onReady: function (e) {
+    // 使用 wx.createAudioContext 获取 audio 上下文 context
+    this.audioCtx = wx.createAudioContext('audioPlayer')
+  },
   buttonClicked: function (e) {
     var nextPageId = e.currentTarget.dataset.nextpageid  //this.data.textdata.links[0].nextPageId
     var url = '../story/story?story_id=' + this.data.story_id + '&page_id=' + nextPageId
@@ -84,5 +88,8 @@ Page({
       fail: function (res) {
       }
     }
+  },
+  audioPlay(){
+    this.audioCtx.play();
   }
 })
