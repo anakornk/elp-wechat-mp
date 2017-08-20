@@ -23,9 +23,6 @@ Page({
   },
   onLoad: function () {
 
-    wx.setNavigationBarTitle({
-      title: ' 大象故事',
-    })
     var last_page = wx.getStorageSync('key')
     // if (last_page) {
     //   wx.navigateTo({
@@ -42,16 +39,7 @@ Page({
         });
       }
     });
-    wx.request({
-      url: host + '/api/v1/stories',
-      method: 'GET',
-      header: { 'content-type': 'application/json' },
-      success: function (res) {
-        that.setData({ textdata: res.data });
-      },
-      fail: function (res) {
-      },
-    });
+    this.loadData();
   },
   bindChange: function (e) {
     var that = this;
@@ -72,22 +60,31 @@ Page({
     var story_id = this.data.textdata[arrayIndex].id;
     var root_page_id = this.data.textdata[arrayIndex].root_page_id;
     var url = '../story/story?story_id=' + story_id + '&page_id=' + root_page_id
-
     wx.navigateTo({
       url: url
     })
   },
   loadData() {
     console.log("load data");
+    var that = this;
+    wx.request({
+      url: host + '/api/v1/stories',
+      method: 'GET',
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        that.setData({ textdata: res.data });
+        wx.stopPullDownRefresh();
+        wx.hideLoading();
+      },
+      fail: function (res) {
+      },
+    });
   },
   onPullDownRefresh: function () {
     console.log("pulldown")
-    wx.stopPullDownRefresh()
-    this.loadData()
-    wx.showToast({
-      title: '加载中...',
-      icon: 'loading',
-      duration: 1500
-    })
+    wx.showLoading({
+      title: '加载中',
+    });
+    this.loadData();
   },
 })
