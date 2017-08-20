@@ -29,26 +29,11 @@ Page({
       page_id: page_id
     })
 
-    //send request and grab current page data
-    var url = host + '/api/v1/stories/' + story_id + '/pages/' + page_id;
-    var current_url = '../story/story?story_id=' + story_id + '&page_id=' + page_id
-    wx.request({
-        url: url,
-        method: 'GET',
-        header: { 'content-type': 'application/json' },
-        success: function (res) {
-          console.log(res.data);
-          that.setData({ textdata: res.data });
-          that.setData({ 
-            isLastPage: that.checkIfLastPage(),
-            isImage: that.checkIfImage()
-          });
-        },
-        fail: function (res) {
-        },
-      });
-
+    //load data
+    this.loadData();
+    
     // save start
+    var current_url = '../story/story?story_id=' + story_id + '&page_id=' + page_id
     wx.setStorageSync('key', current_url)
     // save end
   },
@@ -91,5 +76,33 @@ Page({
   },
   audioPlay(){
     this.audioCtx.play();
+  },
+  loadData(){
+    //send request and grab current page data
+    var that = this;
+    var url = host + '/api/v1/stories/' + this.data.story_id + '/pages/' + this.data.page_id;
+    wx.request({
+      url: url,
+      method: 'GET',
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        console.log(res.data);
+        that.setData({ textdata: res.data });
+        that.setData({
+          isLastPage: that.checkIfLastPage(),
+          isImage: that.checkIfImage()
+        });
+        wx.stopPullDownRefresh();
+        wx.hideLoading();
+      },
+      fail: function (res) {
+      },
+    });
+  },
+  onPullDownRefresh(){
+    wx.showLoading({
+      title: '加载中',
+    });
+    this.loadData();
   }
 })
