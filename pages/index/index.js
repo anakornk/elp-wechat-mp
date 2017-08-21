@@ -16,7 +16,7 @@ Page({
     }
   },
   data: {
-    imgUrls: ['/photos/home-slide-image1.png', '/photos/home-slide-image2.png', '/photos/home-slide-image3.png']
+    imgUrls: ['/photos/homeimage.png']
   },  
   changeIndicatorDots: function (e) {
     this.setData({
