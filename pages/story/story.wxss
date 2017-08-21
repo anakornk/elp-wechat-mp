@@ -59,7 +59,7 @@ video {
 .question-content{
   color: #1E3D2C;
   font-weight: 1000;
-  font-family:  'Lucida Sans';
+  font-family:  'Avenir';
   margin: 10px;
   /* border: 2px solid black;
   border-radius: 5px; */
