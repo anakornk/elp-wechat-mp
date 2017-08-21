@@ -7,8 +7,8 @@
       </swiper-item>
     </block>
     <swiper-item>
-      <image class="intro-content" src='/photos/intro.png'/>
-      <image class='elephant-animation' src='/photos/200w_d.gif'/>
+      <image class="intro-content" src='/photos/newintro.png' />
+      <image class='elephant-animation' src='/photos/200w_d.gif' />
     </swiper-item>
   </swiper>
 </view>
