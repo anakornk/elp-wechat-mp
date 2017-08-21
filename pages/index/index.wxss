@@ -1,28 +1,39 @@
 /**index.wxss**/
-.swiper{
+
+.swiper {
   height: 100vh;
   width: 100vw;
 }
 
-.intro-content{
+.intro-content {
+  height: 100%;
+  position: relative;
   width: 100%;
 }
 
-.elephant-animation{
-  width: 180px;
-  height: 120px;
+.elephant-animation {
+  width: 98px;
+  height: 86px;
+  position: absolute;
+  bottom: 53rpx;
+  display: flex;
+  text-align: center;
+  left: 263rpx;
+  justify-content: center;
+  bottom: 53rpx;
+  align-items: center;
 }
 
 .slide-image {
- height: 100vh;
- width: 100vw;
+  height: 100vh;
+  width: 100vw;
 }
 
-page .wx-swiper-dots.wx-swiper-dots-horizontal{
+page .wx-swiper-dots.wx-swiper-dots-horizontal {
   margin-bottom: 4rpx;
 }
 
-page .wx-swiper-dot{
+page .wx-swiper-dot {
   width: 30rpx;
   display: inline-flex;
   height: 30rpx;
@@ -39,7 +50,6 @@ page .wx-swiper-dot{
     font-size: 40rpx;
 } */
 
-
 /* . home-swiper{
     width:100%;
     position:absolute;
@@ -51,4 +61,3 @@ page .wx-swiper-dot{
     font-size: 70rpx;
     margin-left: 30rpx;
 } */
-
