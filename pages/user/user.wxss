@@ -1,0 +1,36 @@
+/* pages/user/user.wxss */
+.cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.card-progress {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */  margin-top: 15rpx;
+  margin: 15rpx 20rpx;
+  border-radius: 4rpx;
+  border-left:18rpx solid #FFBE04;
+  background-color: white;
+  position: relative;
+}
+
+.card-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.card-content image{
+  width: 150rpx;
+  height: 150rpx;
+  margin: 10rpx;
+  margin-right: 50rpx;
+}
+
+.delete-button {
+  position: absolute;
+  top:15rpx;
+  right:15rpx;
+  width: 30rpx !important;
+  height: 30rpx !important;
+}

@@ -33,8 +33,24 @@ Page({
     this.loadData();
     
     // save start
-    var current_url = '../story/story?story_id=' + story_id + '&page_id=' + page_id
-    wx.setStorageSync('key', current_url)
+    try {
+      var stories = wx.getStorageSync('stories');
+      if (stories) {
+        // add key to old stories obj
+        var current_url = '/pages/story/story?story_id=' + story_id + '&page_id=' + page_id
+        var story = Object.assign({},stories[story_id]);
+        story['current_url'] = current_url;
+        stories[story_id] = story;
+        wx.setStorageSync('stories', stories);
+      }else{
+        //create new stories obj
+        console.log("bug");
+      }
+    } catch (e) {
+      // Do something when catch error
+      console.log(e);
+    }
+   
     // save end
   },
   onReady: function (e) {
@@ -43,7 +59,7 @@ Page({
   },
   buttonClicked: function (e) {
     var nextPageId = e.currentTarget.dataset.nextpageid  //this.data.textdata.links[0].nextPageId
-    var url = '../story/story?story_id=' + this.data.story_id + '&page_id=' + nextPageId
+    var url = '/pages/story/story?story_id=' + this.data.story_id + '&page_id=' + nextPageId
       wx.redirectTo({
         url: url
       })

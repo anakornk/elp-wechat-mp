@@ -3,7 +3,8 @@
     "pages/stories/stories",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/story/story"
+    "pages/story/story",
+    "pages/user/user"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -30,6 +31,13 @@
         "iconPath": "photos/book_icon_black.png",
         "selectedIconPath": "photos/book_icon_white.png",
         "text": "大象故事",
+        "color": "black"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "photos/book_icon_black.png",
+        "selectedIconPath": "photos/book_icon_white.png",
+        "text": "进度",
         "color": "black"
       }
     ]
