@@ -1,19 +1,19 @@
 {
   "pages":[
-    "pages/index/index",
     "pages/stories/stories",
+    "pages/index/index",
     "pages/logs/logs",
     "pages/story/story"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#3DC3CF",
+    "navigationBarBackgroundColor": "#12CC94",
     "navigationBarTitleText": "ELP 大象的低语",
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true
   },
   "tabBar": {
-    "backgroundColor": "#14A3AB",
+    "backgroundColor": "#12CC94",
     "selectedColor": "#fff",
     "color": "#131313",
     "borderStyle": "white",
