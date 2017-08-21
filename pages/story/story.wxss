@@ -1,8 +1,8 @@
 .card{
-  justify-content:center;
   display:flex;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
 }
 
 image{
@@ -29,6 +29,8 @@ video {
   color: #3DC3CF;
   font-weight: 1000;
   font-family:  'Lucida Sans';
+  margin: 10px;
+  border: 2px solid black;
 }
 
 .button_image{
