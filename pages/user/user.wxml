@@ -1,0 +1,7 @@
+<!--pages/user/user.wxml-->
+<view class="cards">
+  <view class="card-progress" wx:for="{{keys}}" wx:for-item="key" wx:key="{{key}}" bindtap="onTap" data-current-url="{{stories[key].current_url}}">
+   <image src="{{stories[key].img_url ? (host + stories[key].img_url) :'/photos/jamilas.jpg'}}"></image>
+   {{stories[key].title}}
+  </view>
+</view>
