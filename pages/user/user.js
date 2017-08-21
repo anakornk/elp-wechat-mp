@@ -8,7 +8,7 @@ Page({
    */
   data: {
     stories: {},
-    keys:{},
+    keys:[],
     host
   },
 
@@ -81,9 +81,32 @@ Page({
   
   },
   onTap(e){
+    console.log("ontop");
     var current_url = e.currentTarget.dataset.currentUrl;
     wx.navigateTo({
       url: current_url
     })
+  },
+  restart(e){
+    console.log("restart");
+    var that = this;
+    try {
+      var stories = wx.getStorageSync('stories');
+      if (stories) {
+        console.log(stories);
+        // add key to old stories obj
+        // var sorted_keys = Object.keys(stories).sort((a, b) => (a - b));
+        // console.log(sorted_keys);
+        //console.log(e.currentTarget.dataset.storyId);
+        var story_id = e.currentTarget.dataset.storyId;
+        delete stories[story_id];
+        wx.setStorageSync('stories', stories);
+        var sorted_keys = this.data.keys.filter(key => key !== story_id)
+        that.setData({ stories: stories, keys: sorted_keys });
+      }
+    } catch (e) {
+      // Do something when catch error
+      console.log(e);
+    }
   }
 })
