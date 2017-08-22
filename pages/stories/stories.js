@@ -113,6 +113,8 @@ Page({
         wx.hideLoading();
       },
       fail: function (res) {
+        wx.stopPullDownRefresh();
+        wx.hideLoading();
       },
     });
   },

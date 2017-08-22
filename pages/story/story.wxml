@@ -1,7 +1,7 @@
-<view class="card">
+<view wx:if="{{textdata.error == undefined}}" class="card">
   <view class="story_content">
-    <image wx:if="{{isImage}}" src="{{host + textdata.image_video_url}}" mode="widthFix" class="story-image"></image>
-    <video wx:else src="{{host + textdata.image_video_url}}" controls="{{true}}" class="story-video"></video>
+    <image wx:if="{{imageVideofileType == 1}}" src="{{host + textdata.image_video_url}}" mode="widthFix" class="story-image"></image>
+    <video wx:elif="{{imageVideofileType == 2}}" src="{{host + textdata.image_video_url}}" controls="{{true}}" class="story-video"></video>
     <view class="text-content">
       <text>{{textdata.content}}</text>
       <audio wx:if="{{textdata.audio_url}}" src="{{host + textdata.audio_url}}" id="audioPlayer"></audio>
@@ -15,6 +15,11 @@
       <button data-nextpageid="{{res.dst_page_id}}" bindtap="buttonClicked">{{res.choice_text}}</button>
     </view>
   </view>
+</view>
+<view wx:else class="error-msg-wrapper">
+  <text class="error-msg">
+    Sorry, the page you request for is no longer available.
+  </text>
 </view>
 
 <!-- 
