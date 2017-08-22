@@ -6,11 +6,18 @@
 <swiper-item> 
 <view class="stories-container">
 <!-- http://www.birds.cornell.edu/brp/elephant/media/images/cyclotis/jamilas.jpg -->
-  <view class="card" wx:for="{{textdata}}" wx:for-item="res" wx:key="{{res.id}}" wx:if="{{res.category == 'Young'}}">
-    <image class="card_image" id="{{index}}" src="{{res.image_url ? (host + res.image_url) :'/photos/jamilas.jpg'}}" bindtap="tz">
+  <view class="card" wx:for="{{textdata}}" wx:for-item="res" wx:key="{{res.id}}" wx:if="{{res.category == 'young'}}">
+    <image class="card_image" data-index="{{index}}"  src="{{res.image_url ? (host + res.image_url) :'/photos/jamilas.jpg'}}" bindtap="tz">
     </image>
     <view class="cardContent">
       <text class="stories_title">{{res.title}}</text>
+    </view>
+    <view class="like-bar">
+      <text>{{res.likes_count}}</text>
+      <text catchtap="likeStory" data-storyid="{{res.id}}">{{res.liked ? "❤️" : "🖤"}}</text>
+    </view>
+    <view wx:if="{{storage_stories[res.id]}}" class="corner-ribbon top-left red shadow">
+      进行中
     </view>
   </view>
 </view>
@@ -18,11 +25,18 @@
 
 <swiper-item>  
 <view class="stories-container">
-  <view class="card" wx:for="{{textdata}}" wx:for-item="res" wx:key="{{res.id}}" wx:if="{{res.category != 'Young'}}">
-    <image class="card_image" id="{{index}}"  src="{{res.image_url ? (host + res.image_url) :'/photos/jamilas.jpg'}}" bindtap="tz">
+  <view class="card" wx:for="{{textdata}}" wx:for-item="res" wx:key="{{res.id}}" wx:if="{{res.category != 'young'}}">
+    <image class="card_image" data-index="{{index}}"  src="{{res.image_url ? (host + res.image_url) :'/photos/jamilas.jpg'}}" bindtap="tz">
     </image>
     <view class="cardContent">
       <text class="stories_title">{{res.title}}</text>
+    </view>
+    <view class="like-bar">
+      <text>{{res.likes_count}}</text>
+      <text catchtap="likeStory" data-storyid="{{res.id}}">{{res.liked ? "❤️" : "🖤"}}</text>
+    </view>
+    <view wx:if="{{storage_stories[res.id]}}" class="progress-bar">
+      进行中
     </view>
   </view>
 </view>

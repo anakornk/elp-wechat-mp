@@ -30,8 +30,9 @@
 
 .delete-button {
   position: absolute;
-  top:15rpx;
-  right:15rpx;
+  top:5rpx;
+  right:5rpx;
   width: 30rpx !important;
   height: 30rpx !important;
+  padding: 10px;
 }

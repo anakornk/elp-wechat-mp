@@ -23,13 +23,6 @@ Page({
   },
   onLoad: function () {
 
-    var last_page = wx.getStorageSync('key')
-    // if (last_page) {
-    //   wx.navigateTo({
-    //     url: last_page,
-    //   })
-    // }
-
     var that = this;
     wx.getSystemInfo({
       success: function (res) {
@@ -40,6 +33,18 @@ Page({
       }
     });
     this.loadData();
+  },
+  onShow(){
+    try {
+      var stories = wx.getStorageSync('stories');
+      if (stories) {
+        this.setData({ storage_stories: stories })
+      }else {
+        this.setData({storage_stories:{}})
+      }
+    }catch(e){
+      console.log("pull stories data from storage error");
+    }
   },
   bindChange: function (e) {
     var that = this;
@@ -56,7 +61,7 @@ Page({
     }
   },
   tz: function (e) {
-    var arrayIndex = e.target.id;
+    var arrayIndex = e.target.dataset.index;
     var story_id = this.data.textdata[arrayIndex].id;
     var root_page_id = this.data.textdata[arrayIndex].root_page_id;
     var title = this.data.textdata[arrayIndex].title;
@@ -64,6 +69,7 @@ Page({
     
     try {
       var stories = wx.getStorageSync('stories');
+
       if (stories) {
         // add key to old stories obj
         var url = "";
@@ -125,4 +131,46 @@ Page({
     });
     this.loadData();
   },
+  likeStory(e){
+    var that = this;
+    try{
+      var story_id = e.currentTarget.dataset.storyid
+      var third_session = wx.getStorageSync('3rd_session');
+      // console.log("likestory")
+      // console.log(third_session)
+      wx.request({
+        url: host + '/api/v1/stories/'+ story_id + '/like',
+        header: { 'content-type': 'application/json' },
+        method: 'POST',
+        data: { third_session: third_session },
+        success: function (res) {
+          // console.log("like story success")
+          // that.setData({ textdata: res.data });
+          //wx.stopPullDownRefresh();
+          //wx.hideLoading();
+          //  console.log(res.data);
+          if(res.data.error == undefined){
+            var textdata = Object.assign([], that.data.textdata);
+            var index = textdata.findIndex(function (element) {
+              return element.id == story_id;
+            });
+            textdata[index].likes_count = res.data.likes_count;
+            textdata[index].liked = res.data.liked;
+            that.setData({ textdata: textdata })
+            // console.log(textdata.length);
+            // console.log(that.data)
+          }else{
+            console.log(res.data.error)
+          }
+         
+        },
+        fail: function (res) {
+          console.log("like failed")
+        },
+      });
+    }catch(e){
+      console.log("like story break catch")
+    }
+    
+  }
 })

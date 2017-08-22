@@ -14,6 +14,8 @@
   margin-right: 10rpx;  
   margin-bottom: 15rpx;
   background-color: #FEF5EF;
+  position: relative;
+  overflow: hidden;
 }
 
 .cardContent {
@@ -21,6 +23,16 @@
   padding-top: 2px;
   padding-bottom: 2px;
   overflow: hidden;
+}
+.card .like-bar {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.card .progress-bar {
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
 }
 
  .stories_title {
@@ -54,3 +66,33 @@ border-bottom: 5rpx solid #da7c0c;}
 .swiper-box view{
   text-align: center;
 }
+
+
+
+
+.corner-ribbon{
+  width: 200px;
+  background: #e43;
+  position: absolute;
+  top: 25px;
+  left: -50px;
+  text-align: center;
+  line-height: 20px;
+  letter-spacing: 1px;
+  color: #f0f0f0;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  font-size: 14rpx;
+}
+
+.corner-ribbon.top-left{
+  top: 15px;
+  left: -70px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.corner-ribbon.shadow{
+  box-shadow: 0 0 3px rgba(0,0,0,.3);
+}
+.corner-ribbon.red{background: #e43;}
