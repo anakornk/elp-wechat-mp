@@ -1,12 +1,14 @@
-<view class="card">
-  <image wx:if="{{isImage}}" src="{{host + textdata.image_video_url}}" mode="widthFix" class="story-image"></image>
-  <video wx:else src="{{host + textdata.image_video_url}}" controls="{{true}}" class="story-video"></video>
-  <view class="text-content">
-    <text>{{textdata.content}}</text>
-    <audio wx:if="{{textdata.audio_url}}" src="{{host + textdata.audio_url}}" id="audioPlayer"></audio>
-    <image wx:if="{{textdata.audio_url}}" class="button_image" src="/photos/play-button.png" bindtap="audioPlay"></image>
+<view wx:if="{{textdata.error == undefined}}" class="card">
+  <view class="story_content">
+    <image wx:if="{{imageVideofileType == 1}}" src="{{host + textdata.image_video_url}}" mode="widthFix" class="story-image"></image>
+    <video wx:elif="{{imageVideofileType == 2}}" src="{{host + textdata.image_video_url}}" controls="{{true}}" class="story-video"></video>
+    <view class="text-content">
+      <text>{{textdata.content}}</text>
+      <audio wx:if="{{textdata.audio_url}}" src="{{host + textdata.audio_url}}" id="audioPlayer"></audio>
+      <image wx:if="{{textdata.audio_url}}" class="button_image" src="/photos/play-button.png" bindtap="audioPlay"></image>
+    </view>
   </view>
-  <text class="question-content">{{textdata.question}}</text>
+  <text wx:if="{{!isLastPage}}" class="question-content">{{textdata.question}}</text>
   <view class="button-container">
     <view wx:if="{{isLastPage}}" class="ending">完
       <image class='elephant-animation' src='/photos/200w_d.gif' />
@@ -16,8 +18,13 @@
     </view>
   </view>
 </view>
+<view wx:else class="error-msg-wrapper">
+  <text class="error-msg">
+    Sorry, the page you request for is no longer available.
+  </text>
+</view>
 
-<!-- 
+<!--
 <image src="src"></image>
 <view class="card_content">
   content here

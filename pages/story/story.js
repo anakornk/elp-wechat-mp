@@ -6,7 +6,7 @@ Page({
     page_id: '0',
     textdata: "put value",
     isLastPage: false,
-    isImage:false,
+    imageVideofileType:0,
     host
   },
   onLoad: function (e) {
@@ -58,23 +58,48 @@ Page({
     this.audioCtx = wx.createAudioContext('audioPlayer')
   },
   buttonClicked: function (e) {
-    var nextPageId = e.currentTarget.dataset.nextpageid  //this.data.textdata.links[0].nextPageId
-    var url = '/pages/story/story?story_id=' + this.data.story_id + '&page_id=' + nextPageId
-      wx.redirectTo({
-        url: url
-      })
+    var nextPageId = e.currentTarget.dataset.nextpageid;  //this.data.textdata.links[0].nextPageId
+    var url = '/pages/story/story?story_id=' + this.data.story_id + '&page_id=' + nextPageId;
+    wx.redirectTo({
+      url: url
+    });
   },
 
   checkIfLastPage() {
+    //if error return true
+    if(this.data.textdata.error){
+      return true;
+    }
     var length = this.data.textdata.links.filter(function (link) {
       return link.dst_page_id != null;
     }).length
     return length == 0;
   },
-  checkIfImage(){
+  checkFileType(){
+    //0 for null
+    //1 for image
+    // 2 for video
+    // 3 for sounds
+    // 4 for others
+    if (this.data.textdata.image_video_url == null) {
+      return 0;
+    }
     var arr = this.data.textdata.image_video_url.split('.');
     var fileExtension = arr[arr.length-1];
-    return (['jpg','png','jpeg'].includes(fileExtension.toLowerCase()))
+    var isImage = ['jpg', 'png', 'jpeg'].includes(fileExtension.toLowerCase());
+    if(isImage){
+      return 1;
+    }
+    var isVideo = ['mov', 'mp4'].includes(fileExtension.toLowerCase());
+    if(isVideo){
+      return 2;
+    }
+
+    var isSound = ['mp3', 'wav'].includes(fileExtension.toLowerCase());
+    if (isSound) {
+      return 3;
+    }
+    return 4;
   },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
@@ -102,12 +127,28 @@ Page({
       method: 'GET',
       header: { 'content-type': 'application/json' },
       success: function (res) {
-        console.log(res.data);
+        console.log(res.data); 
         that.setData({ textdata: res.data });
-        that.setData({
-          isLastPage: that.checkIfLastPage(),
-          isImage: that.checkIfImage()
-        });
+
+        if(res.data.error != undefined){
+          try {
+            var stories = wx.getStorageSync('stories');
+            if (stories) {
+              var story_id = that.data.story_id;
+              delete stories[story_id];
+              wx.setStorageSync('stories', stories);
+            }
+          } catch (e) {
+            // Do something when catch error
+            console.log(e);
+          }
+        }else{
+          that.setData({
+            isLastPage: that.checkIfLastPage(),
+            imageVideofileType: that.checkFileType()
+          });
+        }
+
         wx.stopPullDownRefresh();
         wx.hideLoading();
       },
