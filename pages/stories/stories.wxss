@@ -24,7 +24,7 @@
 }
 
  .stories_title {
-  color: #777;
+  color: #665D55;
   font-size: 25rpx;
   font-weight: bolder;
 } 

@@ -1,14 +1,13 @@
 <!--index.wxml-->
 <view>
-  <swiper indicator-dots="true" class="swiper" autoplay="true" interval="5000" duration="1000">
+  <swiper indicator-dots="true" class="swiper" autoplay="false">
     <block wx:for="{{imgUrls}}" wx:key="{{imgUrls}}">
       <swiper-item>
         <image src="{{item}}" class="slide-image" />
       </swiper-item>
     </block>
     <swiper-item>
-      <image class="intro-content" src='/photos/newintro.png' />
-      <image class='elephant-animation' src='/photos/200w_d.gif' />
+      <image class="intro-content" src='/photos/homeimage2.png' />
     </swiper-item>
   </swiper>
 </view>

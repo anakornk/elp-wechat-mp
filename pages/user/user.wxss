@@ -19,6 +19,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  color: #665D55;
 }
 .card-content image{
   width: 150rpx;
