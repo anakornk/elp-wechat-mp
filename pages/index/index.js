@@ -8,7 +8,7 @@ Page({
     }
     return {
       title: 'Send to friends!',
-      path: '/pages/index',
+      path: '/pages/index/index',
       success: function (res) {
       },
       fail: function (res) {
