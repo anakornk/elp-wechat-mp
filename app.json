@@ -8,13 +8,13 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#76CCB2",
+    "navigationBarBackgroundColor": "#C3B3A4",
     "navigationBarTitleText": "ELP 大象的低语",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true
   },
   "tabBar": {
-    "backgroundColor": "#76CCB2",
+    "backgroundColor": "#C3B3A4",
     "selectedColor": "#fff",
     "color": "#131313",
     "borderStyle": "white",
