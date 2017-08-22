@@ -7,13 +7,15 @@
 <view class="stories-container">
 <!-- http://www.birds.cornell.edu/brp/elephant/media/images/cyclotis/jamilas.jpg -->
   <view class="card" wx:for="{{textdata}}" wx:for-item="res" wx:key="{{res.id}}" wx:if="{{res.category == 'young'}}">
-    <image class="card_image" id="{{index}}" src="{{res.image_url ? (host + res.image_url) :'/photos/jamilas.jpg'}}" bindtap="tz">
+    <image class="card_image" data-index="{{index}}"  src="{{res.image_url ? (host + res.image_url) :'/photos/jamilas.jpg'}}" bindtap="tz">
     </image>
     <view class="cardContent">
       <text class="stories_title">{{res.title}}</text>
     </view>
-    <view>{{res.likes_count}}</view>
-    <view catchtap="likeStory" data-storyid="{{res.id}}">LIKE</view>
+    <view class="like-bar">
+      <text>{{res.likes_count}}</text>
+      <text catchtap="likeStory" data-storyid="{{res.id}}">{{res.liked ? "❤️" : "🖤"}}</text>
+    </view>
   </view>
 </view>
 </swiper-item> 
@@ -21,13 +23,15 @@
 <swiper-item>  
 <view class="stories-container">
   <view class="card" wx:for="{{textdata}}" wx:for-item="res" wx:key="{{res.id}}" wx:if="{{res.category != 'young'}}">
-    <image class="card_image" id="{{index}}"  src="{{res.image_url ? (host + res.image_url) :'/photos/jamilas.jpg'}}" bindtap="tz">
+    <image class="card_image" data-index="{{index}}"  src="{{res.image_url ? (host + res.image_url) :'/photos/jamilas.jpg'}}" bindtap="tz">
     </image>
     <view class="cardContent">
       <text class="stories_title">{{res.title}}</text>
     </view>
-    <view>{{res.likes_count}}</view>
-    <view catchtap="likeStory" data-storyid="{{res.id}}">LIKE</view>
+    <view class="like-bar">
+      <text>{{res.likes_count}}</text>
+      <text catchtap="likeStory" data-storyid="{{res.id}}">{{res.liked ? "❤️" : "🖤"}}</text>
+    </view>
   </view>
 </view>
 </swiper-item> 

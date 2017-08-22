@@ -6,6 +6,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     // var last_page = wx.getStorageSync(key)
+    console.log("login onlaunch")
     this.login();
   },
   
@@ -28,7 +29,7 @@ App({
 
   globalData: {
     userInfo: null,
-    host: 'http://172.16.102.78:3000'
+    host: 'http://192.168.0.100:3000'
   },
   onShow(){
     console.log("onshow");
@@ -38,17 +39,18 @@ App({
       success: function () {
         //session 未过期，并且在本生命周期一直有效
         console.log("session success");
-        try {
-          var third_session = wx.getStorageSync('3rd_session');
-          that.globalData.third_session = third_session;
-          console.log("globaldata session")
-        }
-        catch (e) {
-          console.log(e);
-        }
+        // try {
+        //   var third_session = wx.getStorageSync('3rd_session');
+        //   that.globalData.third_session = third_session;
+        //   console.log("globaldata session")
+        // }
+        // catch (e) {
+        //   console.log(e);
+        // }
       },
       fail: function () {
         //登录态过期
+        console.log("login onshow");
         this.login();
       }
     });
@@ -75,6 +77,7 @@ App({
                 //not error
                 try {
                   wx.setStorageSync('3rd_session', res.data.third_session);
+
                 }
                 catch (e) {
                   console.log(e);
@@ -86,6 +89,9 @@ App({
         } else {
           console.log('获取用户登录态失败！' + res.errMsg)
         }
+      },
+      fail: function(res){
+        console.log("login failed:" + res.errMsg)
       }
     });
     //login

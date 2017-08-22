@@ -14,6 +14,7 @@
   margin-right: 10rpx;  
   margin-bottom: 15rpx;
   background-color: #FEF5EF;
+  position: relative
 }
 
 .cardContent {
@@ -21,6 +22,11 @@
   padding-top: 2px;
   padding-bottom: 2px;
   overflow: hidden;
+}
+.card .like-bar {
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
 
  .stories_title {
