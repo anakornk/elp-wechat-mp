@@ -23,13 +23,6 @@ Page({
   },
   onLoad: function () {
 
-    var last_page = wx.getStorageSync('key')
-    // if (last_page) {
-    //   wx.navigateTo({
-    //     url: last_page,
-    //   })
-    // }
-
     var that = this;
     wx.getSystemInfo({
       success: function (res) {
@@ -40,6 +33,18 @@ Page({
       }
     });
     this.loadData();
+  },
+  onShow(){
+    try {
+      var stories = wx.getStorageSync('stories');
+      if (stories) {
+        this.setData({ storage_stories: stories })
+      }else {
+        this.setData({storage_stories:{}})
+      }
+    }catch(e){
+      console.log("pull stories data from storage error");
+    }
   },
   bindChange: function (e) {
     var that = this;
@@ -64,6 +69,7 @@ Page({
     
     try {
       var stories = wx.getStorageSync('stories');
+
       if (stories) {
         // add key to old stories obj
         var url = "";

@@ -16,6 +16,9 @@
       <text>{{res.likes_count}}</text>
       <text catchtap="likeStory" data-storyid="{{res.id}}">{{res.liked ? "❤️" : "🖤"}}</text>
     </view>
+    <view wx:if="{{storage_stories[res.id]}}" class="corner-ribbon top-left red shadow">
+      进行中
+    </view>
   </view>
 </view>
 </swiper-item> 
@@ -31,6 +34,9 @@
     <view class="like-bar">
       <text>{{res.likes_count}}</text>
       <text catchtap="likeStory" data-storyid="{{res.id}}">{{res.liked ? "❤️" : "🖤"}}</text>
+    </view>
+    <view wx:if="{{storage_stories[res.id]}}" class="progress-bar">
+      进行中
     </view>
   </view>
 </view>
