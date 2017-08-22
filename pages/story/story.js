@@ -58,18 +58,22 @@ Page({
     this.audioCtx = wx.createAudioContext('audioPlayer')
   },
   buttonClicked: function (e) {
-    var nextPageId = e.currentTarget.dataset.nextpageid  //this.data.textdata.links[0].nextPageId
-    var url = '/pages/story/story?story_id=' + this.data.story_id + '&page_id=' + nextPageId
-      wx.redirectTo({
-        url: url
-      })
+    var nextPageId = e.currentTarget.dataset.nextpageid;  //this.data.textdata.links[0].nextPageId
+    var url = '/pages/story/story?story_id=' + this.data.story_id + '&page_id=' + nextPageId;
+    wx.redirectTo({
+      url: url
+    });
   },
 
   checkIfLastPage() {
+    //if error return true
+    if(this.data.textdata.error){
+      return true;
+    }
     var length = this.data.textdata.links.filter(function (link) {
       return link.dst_page_id != null;
     }).length
-    return length == f0;
+    return length == 0;
   },
   checkFileType(){
     //0 for null
@@ -123,12 +127,28 @@ Page({
       method: 'GET',
       header: { 'content-type': 'application/json' },
       success: function (res) {
-        console.log(res.data);
+        console.log(res.data); 
         that.setData({ textdata: res.data });
-        that.setData({
-          isLastPage: that.checkIfLastPage(),
-          imageVideofileType: that.checkFileType()
-        });
+
+        if(res.data.error != undefined){
+          try {
+            var stories = wx.getStorageSync('stories');
+            if (stories) {
+              var story_id = that.data.story_id;
+              delete stories[story_id];
+              wx.setStorageSync('stories', stories);
+            }
+          } catch (e) {
+            // Do something when catch error
+            console.log(e);
+          }
+        }else{
+          that.setData({
+            isLastPage: that.checkIfLastPage(),
+            imageVideofileType: that.checkFileType()
+          });
+        }
+
         wx.stopPullDownRefresh();
         wx.hideLoading();
       },

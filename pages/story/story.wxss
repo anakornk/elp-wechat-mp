@@ -109,3 +109,15 @@ background-color:#1E3D2C;
 .wx-video-cover {
   border-radius: 10px;
 }
+
+.error-msg-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.error-msg {
+  text-align: center;
+}
