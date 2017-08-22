@@ -1,5 +1,9 @@
 /**index.wxss**/
 
+body{
+background: #C3B3A4;
+}
+
 .swiper {
   height: 100vh;
   width: 100vw;

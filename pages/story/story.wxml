@@ -8,9 +8,11 @@
       <image wx:if="{{textdata.audio_url}}" class="button_image" src="/photos/play-button.png" bindtap="audioPlay"></image>
     </view>
   </view>
-  <text class="question-content">{{textdata.question}}</text>
+  <text wx:if="{{!isLastPage}}" class="question-content">{{textdata.question}}</text>
   <view class="button-container">
-    <view wx:if="{{isLastPage}}">The End</view>
+    <view wx:if="{{isLastPage}}" class="ending">完
+      <image class='elephant-animation' src='/photos/200w_d.gif' />
+    </view>
     <view wx:for="{{textdata.links}}" wx:for-item="res" wx:if="{{res.dst_page_id != null}}" wx:key="{{res.choice_index}}">
       <button data-nextpageid="{{res.dst_page_id}}" bindtap="buttonClicked">{{res.choice_text}}</button>
     </view>
@@ -22,7 +24,7 @@
   </text>
 </view>
 
-<!-- 
+<!--
 <image src="src"></image>
 <view class="card_content">
   content here
