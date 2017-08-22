@@ -6,7 +6,7 @@ Page({
     page_id: '0',
     textdata: "put value",
     isLastPage: false,
-    isImage:false,
+    imageVideofileType:0,
     host
   },
   onLoad: function (e) {
@@ -69,12 +69,33 @@ Page({
     var length = this.data.textdata.links.filter(function (link) {
       return link.dst_page_id != null;
     }).length
-    return length == 0;
+    return length == f0;
   },
-  checkIfImage(){
+  checkFileType(){
+    //0 for null
+    //1 for image
+    // 2 for video
+    // 3 for sounds
+    // 4 for others
+    if (this.data.textdata.image_video_url == null) {
+      return 0;
+    }
     var arr = this.data.textdata.image_video_url.split('.');
     var fileExtension = arr[arr.length-1];
-    return (['jpg','png','jpeg'].includes(fileExtension.toLowerCase()))
+    var isImage = ['jpg', 'png', 'jpeg'].includes(fileExtension.toLowerCase());
+    if(isImage){
+      return 1;
+    }
+    var isVideo = ['mov', 'mp4'].includes(fileExtension.toLowerCase());
+    if(isVideo){
+      return 2;
+    }
+
+    var isSound = ['mp3', 'wav'].includes(fileExtension.toLowerCase());
+    if (isSound) {
+      return 3;
+    }
+    return 4;
   },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
@@ -106,7 +127,7 @@ Page({
         that.setData({ textdata: res.data });
         that.setData({
           isLastPage: that.checkIfLastPage(),
-          isImage: that.checkIfImage()
+          imageVideofileType: that.checkFileType()
         });
         wx.stopPullDownRefresh();
         wx.hideLoading();
