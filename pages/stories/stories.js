@@ -125,4 +125,39 @@ Page({
     });
     this.loadData();
   },
+  likeStory(e){
+    var that = this;
+    try{
+      var story_id = e.currentTarget.dataset.storyid
+      var third_session = wx.getStorageSync('3rd_session');
+      console.log("likestory")
+      console.log(third_session)
+      wx.request({
+        url: host + '/api/v1/stories/'+ story_id + '/like',
+        header: { 'content-type': 'application/json' },
+        method: 'POST',
+        data: { third_session: third_session },
+        success: function (res) {
+          console.log("like story success")
+          // that.setData({ textdata: res.data });
+          //wx.stopPullDownRefresh();
+          //wx.hideLoading();
+          var textdata = Object.assign([],that.data.textdata);
+          var index = textdata.findIndex(function(element){
+           return element.id == story_id;
+          });
+          textdata[index] = res.data;
+          that.setData({textdata:textdata})
+          // console.log(textdata.length);
+          console.log(this.data)
+        },
+        fail: function (res) {
+          console.log("like failed")
+        },
+      });
+    }catch(e){
+      console.log("like story break catch")
+    }
+    
+  }
 })
