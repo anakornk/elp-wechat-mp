@@ -27,7 +27,27 @@
   margin: 10rpx;
   margin-right: 50rpx;
 }
+.card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: flex-start;  
+}
 
+.in-progress {
+  color: #22CC77
+}
+
+.completed {
+  color: #3399DD;
+}
+.card-info .status{
+  font-size: 25rpx;
+}
+
+.card-info .title {
+  font-size: 40rpx;
+}
 .delete-button {
   position: absolute;
   top:5rpx;

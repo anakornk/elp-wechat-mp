@@ -143,10 +143,27 @@ Page({
             console.log(e);
           }
         }else{
+          var isLastPage = that.checkIfLastPage()
           that.setData({
-            isLastPage: that.checkIfLastPage(),
+            isLastPage: isLastPage,
             imageVideofileType: that.checkFileType()
           });
+          if(isLastPage){
+            try {
+              var stories = wx.getStorageSync('stories');
+              if (stories) {
+                var story_id = that.data.story_id;
+                // var story = Object.assign({},stories[story_id]);
+                // story['completed'] = true;
+                stories[story_id].completed = true;
+                // delete stories[story_id];
+                wx.setStorageSync('stories', stories);
+              }
+            } catch (e) {
+              // Do something when catch error
+              console.log(e);
+            }
+          }
         }
 
         wx.stopPullDownRefresh();
@@ -163,5 +180,12 @@ Page({
       title: '加载中',
     });
     this.loadData();
+  },
+  endButtonClicked(){
+    console.log("redirect")
+    var url = '/pages/user/user'
+    wx.switchTab({
+      url: url
+    })
   }
 })

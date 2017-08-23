@@ -10,8 +10,10 @@
   </view>
   <text wx:if="{{!isLastPage}}" class="question-content">{{textdata.question}}</text>
   <view class="button-container">
-    <view wx:if="{{isLastPage}}" class="ending">完
-      <image class='elephant-animation' src='/photos/200w_d.gif' />
+    <view wx:if="{{isLastPage}}" class="ending">
+      <text>完</text>
+      <button bindtap="endButtonClicked">查看进度</button>
+      <!-- <image class='elephant-animation' src='/photos/200w_d.gif' /> -->
     </view>
     <view wx:for="{{textdata.links}}" wx:for-item="res" wx:if="{{res.dst_page_id != null}}" wx:key="{{res.choice_index}}">
       <button data-nextpageid="{{res.dst_page_id}}" bindtap="buttonClicked">{{res.choice_text}}</button>

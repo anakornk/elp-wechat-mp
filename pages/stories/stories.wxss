@@ -32,6 +32,8 @@
   display:flex;
   justify-content: flex-end;
   align-items: center;
+  padding-left: 25rpx;
+  padding-bottom: 45rpx;
 }
 
 .card .like-bar text {
@@ -109,8 +111,11 @@ border-bottom: 5rpx solid #da7c0c;}
 }
 .corner-ribbon.new{
   background: #e43;
-  }
+}
 
+.corner-ribbon.completed{
+  background: #3399DD;
+}
 page {
   height: 100%;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
