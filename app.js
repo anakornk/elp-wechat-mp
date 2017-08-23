@@ -29,7 +29,7 @@ App({
 
   globalData: {
     userInfo: null,
-    host: 'http://172.16.102.78:3000'
+    host: 'http://192.168.0.100:3000'
   },
   onShow(){
     console.log("onshow");
@@ -51,17 +51,18 @@ App({
       fail: function () {
         //登录态过期
         console.log("login onshow");
-        this.login();
+        that.login();
       }
     });
   },
   login(){
-    console.log("login test");
+    // console.log("login test");
+    wx.setStorageSync('3rd_session', "")
     var that = this;
     wx.login({
       success: function (res) {
         if (res.code) {
-          console.log(res.code);
+          // console.log(res.code);
           //发起网络请求
           wx.request({
             url: that.globalData.host + '/api/v1/wechatusers/login',
