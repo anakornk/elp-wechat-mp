@@ -16,7 +16,7 @@
       <text>{{res.likes_count}}</text>
       <!-- <text catchtap="likeStory" data-storyid="{{res.id}}">{{res.liked ? "❤️" : "🖤"}}</text> -->
       <i wx:if="{{res.liked}}" class="fa fa-heart" aria-hidden="true" style="color:red" ></i>
-      <i wx:if="{{!res.liked}}" class="fa fa-heart" aria-hidden="true" style="color:black"></i>
+      <i wx:else class="fa fa-heart" aria-hidden="true" style="color:black"></i>
     </view>
     <view >
       <view wx:if="{{storage_stories[res.id] && storage_stories[res.id].completed}}" class="corner-ribbon top-left completed shadow">

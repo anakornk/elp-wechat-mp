@@ -107,25 +107,35 @@ Page({
     
   },
   loadData() {
-    console.log("load data");
-    var that = this;
-    wx.request({
-      url: host + '/api/v1/stories',
-      method: 'GET',
-      header: { 'content-type': 'application/json' },
-      success: function (res) {
-        for(var i=0;i<res.data.length;i++){
-          res.data[i].isNew = (new Date()-new Date(res.data[i].updated_at))/(1000*60*60*24) < 3
-        }
-        that.setData({ textdata: res.data });
-        wx.stopPullDownRefresh();
-        wx.hideLoading();
-      },
-      fail: function (res) {
-        wx.stopPullDownRefresh();
-        wx.hideLoading();
-      },
-    });
+    try{
+      var third_session = wx.getStorageSync('3rd_session');
+      while(third_session == {}){
+        third_session = wx.getStorageSync('3rd_session');
+        sleep(10);
+      }
+      console.log("load data");
+      var that = this;
+      wx.request({
+        url: host + '/api/v1/stories',
+        method: 'GET',
+        header: { 'content-type': 'application/json' },
+        data: { third_session: third_session },
+        success: function (res) {
+          for (var i = 0; i < res.data.length; i++) {
+            res.data[i].isNew = (new Date() - new Date(res.data[i].updated_at)) / (1000 * 60 * 60 * 24) < 3
+          }
+          that.setData({ textdata: res.data });
+          wx.stopPullDownRefresh();
+          wx.hideLoading();
+        },
+        fail: function (res) {
+          wx.stopPullDownRefresh();
+          wx.hideLoading();
+        },
+      });
+    }catch(e){
+      console.log(e);
+    }
   },
   onPullDownRefresh: function () {
     console.log("pulldown")

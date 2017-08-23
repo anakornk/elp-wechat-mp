@@ -29,7 +29,7 @@ App({
 
   globalData: {
     userInfo: null,
-    host: 'http://172.16.102.78:3000'
+    host: 'http://192.168.0.100:3000'
   },
   onShow(){
     console.log("onshow");
