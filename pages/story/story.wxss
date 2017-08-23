@@ -92,7 +92,6 @@ video {
   width: 150px;
   height: 145px;
   position: absolute;
-  bottom: 53rpx;
   display: flex;
   text-align: center;
   left: 263rpx;
