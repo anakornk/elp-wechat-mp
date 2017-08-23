@@ -93,6 +93,7 @@ video {
 .button-container {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 20rpx;
 }
 
 .elephant-animation {
@@ -132,6 +133,14 @@ button {
   font-weight: bold;
   font-size: 40px;
   color: #665D55;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.ending button{
+  margin-top: 10rpx;
 }
 
 .wx-video-cover {

@@ -3,7 +3,12 @@
   <view class="card-progress" wx:for="{{keys}}" wx:for-item="key" wx:key="{{key}}" bindtap="onTap" data-current-url="{{stories[key].current_url}}">
    <view class="card-content">
     <image src="{{stories[key].img_url ? (host + stories[key].img_url) :'/photos/jamilas.jpg'}}"></image>
-    <text>{{stories[key].title}}</text>
+    <view class="card-info">
+      <text class="title">{{stories[key].title}}</text>
+      <text wx:if="{{stories[key].completed != undefined}}" class="status completed">已读</text>
+      <text wx:else class="status in-progress">进行中 </text>
+
+    </view>
    </view>
    <image class="delete-button" src="/photos/bin-icon.png" catchtap="restart" data-story-id="{{key}}"></image>
   </view>
