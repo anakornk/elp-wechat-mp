@@ -31,24 +31,24 @@ video {
   background-color: white;
   font-size: 35rpx;
   margin: 10px;
-  border-radius: 4px;
-  border: 2px solid rgb(204, 204, 204); 
+  border-radius: 8rpx;
+  /* border: 2px solid rgb(204, 204, 204);  */
   position: relative;
+  display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 .story_content .story-image {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  margin-bottom: 5px;
+  border-top-left-radius: 8rpx;
+  border-top-right-radius: 8rpx;
   /* max-width: 100%; *//* height: auto; *//* object-fit: contain; */
   width: 100%;
 }
 
 .story_content .story-video {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  margin-bottom: 5px;
+  border-top-left-radius: 8rpx;
+  border-top-right-radius: 8rpx;
 }
 
 .text-content {
@@ -56,6 +56,13 @@ video {
   font-size: 15px;
   text-align: inherit;
   color: #665D55;
+  /* text-indent: 15rpx; */
+  border-left: 1px solid rgb(204, 204, 204);  
+  border-right: 1px solid rgb(204, 204, 204);  
+  border-bottom: 1px solid rgb(204, 204, 204);  
+  border-bottom-left-radius: 8rpx;
+  border-bottom-right-radius: 8rpx;
+
 }
 
 .question-content {
@@ -92,7 +99,6 @@ video {
   width: 150px;
   height: 145px;
   position: absolute;
-  bottom: 53rpx;
   display: flex;
   text-align: center;
   left: 263rpx;

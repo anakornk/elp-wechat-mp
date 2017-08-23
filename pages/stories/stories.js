@@ -114,6 +114,9 @@ Page({
       method: 'GET',
       header: { 'content-type': 'application/json' },
       success: function (res) {
+        for(var i=0;i<res.data.length;i++){
+          res.data[i].isNew = (new Date()-new Date(res.data[i].updated_at))/(1000*60*60*24) < 3
+        }
         that.setData({ textdata: res.data });
         wx.stopPullDownRefresh();
         wx.hideLoading();

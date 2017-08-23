@@ -36,3 +36,7 @@
   height: 30rpx !important;
   padding: 10px;
 }
+
+page {
+  background-color: #EDE8E5;
+}
