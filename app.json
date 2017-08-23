@@ -28,9 +28,9 @@
       },
       {
         "pagePath": "pages/stories/stories",
-        "iconPath": "photos/book_icon_black.png",
-        "selectedIconPath": "photos/book_icon_white.png",
-        "text": "大象故事",
+        "iconPath": "photos/books-black.png",
+        "selectedIconPath": "photos/books-white.png",
+        "text": "故事",
         "color": "black"
       },
       {
