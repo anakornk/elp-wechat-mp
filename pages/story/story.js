@@ -37,6 +37,9 @@ Page({
       var stories = wx.getStorageSync('stories');
       if (stories) {
         // add key to old stories obj
+        wx.setNavigationBarTitle({
+          title: stories[story_id].title
+        })
         var current_url = '/pages/story/story?story_id=' + story_id + '&page_id=' + page_id
         var story = Object.assign({},stories[story_id]);
         story['current_url'] = current_url;
@@ -105,13 +108,20 @@ Page({
     if (res.from === 'button') {
       console.log(res.target)
     }
+    var imgUrl = ''
+    if(this.data.imageVideofileType == 1){
+      console.log("img url");
+      imgUrl = this.data.host + this.data.textdata.image_video_url
+    }
     return {
       title: 'Send to friends!',
       path: '/pages/story/story?story_id=' + this.data.story_id + '&page_id=' + this.data.page_id,
+      imageUrl: imgUrl,
       success: function (res) {
-
+      //  console.log("shared");
       },
       fail: function (res) {
+        // console.log("not shared");
       }
     }
   },

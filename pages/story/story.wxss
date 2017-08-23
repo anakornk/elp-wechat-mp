@@ -66,7 +66,7 @@ video {
 }
 
 .question-content {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   border-radius: 7px;
   padding: 2px;
   color: #665D55;
@@ -122,7 +122,8 @@ button {
   text-align: center;
   text-decoration: none;
   line-height: 2.55555556;
-  border-radius: 20px;
+  /* border-radius: 20px; */
+  border-radius: 10rpx;
   -webkit-tap-highlight-color: transparent;
   overflow: hidden;
   color: white;
