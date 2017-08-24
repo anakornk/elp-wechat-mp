@@ -7,6 +7,7 @@ Page({
     textdata: "put value",
     isLastPage: false,
     imageVideofileType:0,
+    root_page_id: undefined,
     host
   },
   onLoad: function (e) {
@@ -105,17 +106,21 @@ Page({
     return 4;
   },
   onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      console.log(res.target)
-    }
+    var path = '/pages/story/story?story_id=' + this.data.story_id + '&page_id=' + this.data.page_id;
     var imgUrl = ''
-    if(this.data.imageVideofileType == 1){
+    if (this.data.imageVideofileType == 1) {
       console.log("img url");
       imgUrl = this.data.host + this.data.textdata.image_video_url
     }
+
+    if (res.from === 'button') {
+      path = '/pages/story/story?story_id=' + this.data.story_id + '&page_id=' + this.data.root_page_id;
+      imgUrl = this.data.host + this.data.root_page_imgUrl;
+    }
+   
     return {
       title: 'Send to friends!',
-      path: '/pages/story/story?story_id=' + this.data.story_id + '&page_id=' + this.data.page_id,
+      path: path,
       imageUrl: imgUrl,
       success: function (res) {
       //  console.log("shared");
@@ -159,6 +164,23 @@ Page({
             imageVideofileType: that.checkFileType()
           });
           if(isLastPage){
+            wx.request({
+              url: host + '/api/v1/stories/' + that.data.story_id,
+              success: function (res) {
+                console.log(res.data);
+                if (res.data.error != undefined) {
+                  //error
+                  console.log("login error");
+                } else {
+                  //success
+                  that.setData({
+                    root_page_id: res.data.root_page_id,
+                    root_page_imgUrl: res.data.image.url
+                  });
+                }
+
+              }
+            })
             try {
               var stories = wx.getStorageSync('stories');
               if (stories) {

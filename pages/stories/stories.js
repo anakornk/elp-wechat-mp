@@ -19,10 +19,12 @@ Page({
     winHeight: 0,
     currentTab: 0,
     textdata: "put value",
+    scrollTop: 0,
     host
   },
   onLoad: function () {
-
+    this.pulledDown = 0;
+    this.backToZero = 1;
     var that = this;
     wx.getSystemInfo({
       success: function (res) {
@@ -56,6 +58,7 @@ Page({
     this.timerId = timerId;
   },
   onShow(){
+
     try {
       var stories = wx.getStorageSync('stories');
       if (stories) {
@@ -149,10 +152,14 @@ Page({
         
         wx.stopPullDownRefresh();
         wx.hideLoading();
+        that.setData({ pulledDown: false })
+        that.pulledDown = 0;
       },
       fail: function (res) {
         wx.stopPullDownRefresh();
         wx.hideLoading();
+        that.setData({ pulledDown: false })
+        that.pulledDown = 0;
       },
     });
 
@@ -223,5 +230,50 @@ Page({
     //   title: '加载中',
     // });
     // this.loadData();
+  },scroll(e){
+    // console.log(e.detail.scrollTop);
+    // console.log(this.data.pulledDown);
+    var pulledDown = (this.pulledDown == 0);
+    var isBelow = e.detail.scrollTop < -50;
+    var  backToZero = this.backToZero == 1;
+    // console.log("---");
+    // console.log(pulledDown);
+    // console.log(isBelow);
+    // console.log("---");
+    if(e.detail.scrollTop >= 0 ){
+      this.backToZero = 1;
+    }
+    if(pulledDown && isBelow && backToZero){
+      console.log("puleld down")
+      // this.setData({ pulledDown: true })
+      this.pulledDown = 1;
+      this.backToZero = 0;
+      wx.showLoading({
+        title: '加载中',
+      });
+      try {
+        var third_session = wx.getStorageSync('3rd_session')
+        if (third_session != "") {
+          this.loadData(third_session);
+        } else {
+          console.log("third_session blank")
+          wx.stopPullDownRefresh();
+          wx.hideLoading();
+        }
+      } catch (e) {
+        console.log("tata error");
+      } 
+    }
+  },
+  scroll2: function (event) {
+    this.setData({
+      scrollTop: event.detail.scrollTop
+    });
+  }, refresh2: function (event) {
+    this.setData({
+      scrollTop: 0
+    });
+    console.log("resfresh");
   }
+  
 })
