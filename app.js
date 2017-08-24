@@ -6,7 +6,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     // var last_page = wx.getStorageSync(key)
-    console.log("login onlaunch")
+   // console.log("login onlaunch")
     this.login();
   },
   
@@ -29,31 +29,31 @@ App({
 
   globalData: {
     userInfo: null,
-    host: 'http://172.16.102.78:3000'
+    host: 'https://elp.shanghaiwogeng.com'
   },
   onShow(){
-    console.log("onshow");
-    //login
-    var that = this;
-    wx.checkSession({
-      success: function () {
-        //session 未过期，并且在本生命周期一直有效
-        console.log("session success");
-        // try {
-        //   var third_session = wx.getStorageSync('3rd_session');
-        //   that.globalData.third_session = third_session;
-        //   console.log("globaldata session")
-        // }
-        // catch (e) {
-        //   console.log(e);
-        // }
-      },
-      fail: function () {
-        //登录态过期
-        console.log("login onshow");
-        that.login();
-      }
-    });
+    // console.log("onshow");
+    // //login
+    // var that = this;
+    // wx.checkSession({
+    //   success: function () {
+    //     //session 未过期，并且在本生命周期一直有效
+    //     console.log("session success");
+    //     // try {
+    //     //   var third_session = wx.getStorageSync('3rd_session');
+    //     //   that.globalData.third_session = third_session;
+    //     //   console.log("globaldata session")
+    //     // }
+    //     // catch (e) {
+    //     //   console.log(e);
+    //     // }
+    //   },
+    //   fail: function () {
+    //     //登录态过期
+    //     console.log("login onshow");
+    //     that.login();
+    //   }
+    // });
   },
   login(){
     // console.log("login test");

@@ -37,7 +37,7 @@ Page({
     });
     var count = 0;
     var timerId = setInterval(function(){
-      if(count > 100){
+      if(count > 200){
         console.log("timeout");
         clearInterval(that.timerId);
       }
