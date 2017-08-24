@@ -235,10 +235,10 @@ Page({
     var pulledDown = (this.pulledDown == 0);
     var isBelow = e.detail.scrollTop < -50;
     var  backToZero = this.backToZero == 1;
-    console.log("---");
-    console.log(pulledDown);
-    console.log(isBelow);
-    console.log("---");
+    // console.log("---");
+    // console.log(pulledDown);
+    // console.log(isBelow);
+    // console.log("---");
     if(e.detail.scrollTop >= 0 ){
       this.backToZero = 1;
     }
@@ -255,6 +255,7 @@ Page({
         if (third_session != "") {
           this.loadData(third_session);
         } else {
+          console.log("third_session blank")
           wx.stopPullDownRefresh();
           wx.hideLoading();
         }
@@ -263,4 +264,5 @@ Page({
       } 
     }
   }
+  
 })

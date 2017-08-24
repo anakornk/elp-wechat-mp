@@ -33,6 +33,7 @@
           </view>
         </view>
       </view>
+      <view style="padding: 50rpx"></view>
     </scroll-view>
     </swiper-item> 
 
@@ -64,8 +65,8 @@
           </view>
         </view>
       </view>
+      <view style="padding: 50rpx"></view>
     </scroll-view>
     </swiper-item> 
   </swiper>
-
 </view>
