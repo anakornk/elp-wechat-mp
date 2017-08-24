@@ -7,7 +7,7 @@ Page({
       console.log(res.target)
     }
     return {
-      title: 'Send to friends!',
+      title: '来看看大象的故事!',
       path: '/pages/index/index',
       success: function (res) {
       },

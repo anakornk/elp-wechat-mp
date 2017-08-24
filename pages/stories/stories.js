@@ -6,7 +6,8 @@ Page({
       console.log(res.target)
     }
     return {
-      title: 'Send to friends!',
+      title: '来看看大象的故事!',
+      imageUrl: this.data.host + '/images/elp_logo.png',
       path: '/pages/stories/stories',
       success: function (res) {
       },
