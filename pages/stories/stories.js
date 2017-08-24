@@ -19,6 +19,7 @@ Page({
     winHeight: 0,
     currentTab: 0,
     textdata: "put value",
+    scrollTop: 0,
     host
   },
   onLoad: function () {
@@ -263,6 +264,16 @@ Page({
         console.log("tata error");
       } 
     }
+  },
+  scroll2: function (event) {
+    this.setData({
+      scrollTop: event.detail.scrollTop
+    });
+  }, refresh2: function (event) {
+    this.setData({
+      scrollTop: 0
+    });
+    console.log("resfresh");
   }
   
 })

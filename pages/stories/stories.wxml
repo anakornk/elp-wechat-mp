@@ -5,7 +5,7 @@
   </view>
   <swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange">  
     <swiper-item> 
-    <scroll-view scroll-y style="height:100%"  enable-back-to-top="{{true}}" bindscroll="scroll">
+    <!-- <scroll-view scroll-y style="height:100%"  enable-back-to-top="{{true}}" bindscroll="scroll"> -->
       <view class="stories-container">
       <!-- http://www.birds.cornell.edu/brp/elephant/media/images/cyclotis/jamilas.jpg -->
         <view class="card" wx:for="{{textdata}}" wx:for-item="res" wx:key="{{res.id}}" wx:if="{{res.category == 'young'}}">
@@ -34,11 +34,11 @@
         </view>
       </view>
       <view style="padding: 50rpx"></view>
-    </scroll-view>
+    <!-- </scroll-view> -->
     </swiper-item> 
 
     <swiper-item>  
-    <scroll-view scroll-y style="height:100%" enable-back-to-top="{{true}}" bindscroll="scroll">
+    <!-- <scroll-view scroll-y style="height:100%" enable-back-to-top="{{true}}" bindscroll="scroll"> -->
       <view class="stories-container">
         <view class="card" wx:for="{{textdata}}" wx:for-item="res" wx:key="{{res.id}}" wx:if="{{res.category != 'young'}}">
           <image class="card_image" data-index="{{index}}"  src="{{res.image_url ? (host + res.image_url) :'/photos/jamilas.jpg'}}" bindtap="tz">
@@ -66,7 +66,7 @@
         </view>
       </view>
       <view style="padding: 50rpx"></view>
-    </scroll-view>
+    <!-- </scroll-view> -->
     </swiper-item> 
   </swiper>
 </view>

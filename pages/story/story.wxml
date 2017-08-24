@@ -12,6 +12,7 @@
   <view class="button-container">
     <view wx:if="{{isLastPage}}" class="ending">
       <text>完</text>
+      <button wx:if="{{root_page_id != undefined}}" open-type="share">分享</button>
       <button bindtap="endButtonClicked">查看进度</button>
       <!-- <image class='elephant-animation' src='/photos/200w_d.gif' /> -->
     </view>
